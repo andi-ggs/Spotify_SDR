@@ -1,0 +1,46 @@
+{
+  "user_1765227045665": {
+    "user_id": "user_1765227045665",
+    "email": "andreea@test.com",
+    "name": "andreea",
+    "registered_at": "2025-12-08T22:50:45.666045",
+    "preferred_genres": [
+      "pop",
+      "r-n-b",
+      "latin",
+      "dance"
+    ],
+    "preferred_artists": [
+      "Queen"
+    ],
+    "mood_preferences": [
+      {
+        "mood": "happy",
+        "timestamp": "2025-12-08T22:51:15.566712"
+      },
+      {
+        "mood": "happy",
+        "timestamp": "2025-12-08T22:53:24.263621"
+      }
+    ],
+    "listening_history": [],
+    "liked_tracks": [],
+    "interactions": [],
+    "stats": {
+      "total_listens": 0,
+      "total_likes": 0,
+      "favorite_genres": {
+        "pop": 1,
+        "r-n-b": 2,
+        "latin": 1,
+        "dance": 1
+      },
+      "favorite_artists": {
+        "Queen": 1
+      }
+    },
+    "listening_time_preference": "medium",
+    "energy_level": 0.5,
+    "danceability": 0.5
+  }
+}

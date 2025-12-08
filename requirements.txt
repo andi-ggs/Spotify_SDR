@@ -1,0 +1,4 @@
+flask>=2.3.0
+recombee-api-client>=4.1.0
+python-dotenv>=1.0.0
+
