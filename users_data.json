@@ -42,5 +42,33 @@
     "listening_time_preference": "medium",
     "energy_level": 0.5,
     "danceability": 0.5
+  },
+  "user_1765301016661": {
+    "user_id": "user_1765301016661",
+    "email": "andreea1@test.com",
+    "name": "",
+    "registered_at": "2025-12-09T19:23:36.662656",
+    "preferred_genres": [
+      "pop"
+    ],
+    "preferred_artists": [
+      "Taylor Swift",
+      "The Weeknd"
+    ],
+    "mood_preferences": [],
+    "listening_history": [],
+    "liked_tracks": [],
+    "interactions": [],
+    "stats": {
+      "total_listens": 0,
+      "total_likes": 0,
+      "favorite_genres": {
+        "pop": 1
+      },
+      "favorite_artists": {
+        "Taylor Swift": 1,
+        "The Weeknd": 1
+      }
+    }
   }
 }

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistem de Recomandare Muzică</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 50px 40px;
+            animation: slideUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1ed760, #17c653);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        button:hover::before {
+            left: 0;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(29, 185, 84, 0.4);
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .links a:hover::after {
+            width: 100%;
+        }
+        
+        .links a:hover {
+            color: #764ba2;
+        }
+        
+        .message {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .error {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            color: #c62828;
+            border: 1px solid #ef5350;
+        }
+        
+        .success {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Login</h1>
+        
+        <div id="message" class="message" style="display: none;"></div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit">Conectează-te</button>
+        </form>
+        
+        <div class="links">
+            <a href="/register">Nu ai cont? Înregistrează-te</a> |
+            <a href="/">Înapoi la Demo</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('message');
+            const formData = new FormData(this);
+            
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            };
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    messageDiv.className = 'message success';
+                    messageDiv.textContent = result.message;
+                    messageDiv.style.display = 'block';
+                    
+                    // Redirect to profile after successful login
+                    setTimeout(() => {
+                        window.location.href = '/profile';
+                    }, 1500);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = result.error;
+                    messageDiv.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                messageDiv.className = 'message error';
+                messageDiv.textContent = 'Eroare de conexiune. Încearcă din nou.';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

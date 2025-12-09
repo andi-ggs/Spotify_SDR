@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Utilizator - Sistem de Recomandare Muzică</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            animation: slideUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            float: right;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+        }
+        
+        .links {
+            text-align: center;
+            margin-bottom: 30px;
+            clear: both;
+        }
+        
+        .links a {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .links a:hover::before {
+            left: 0;
+        }
+        
+        .links a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .user-info {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #1db954;
+        }
+        
+        .user-info h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .recommendations-section {
+            margin-bottom: 40px;
+        }
+        
+        .recommendations-section h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+        
+        .recommendation-type {
+            background: linear-gradient(135deg, rgba(240,248,255,0.9), rgba(230,245,255,0.7));
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .recommendation-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .recommendation-type h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .recommendation-type p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        input[type="range"] {
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .slider-value {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1ed760, #17c653);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        button:hover::before {
+            left: 0;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.4);
+        }
+        
+        .track {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            border-left: 5px solid #1db954;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .track::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(29,185,84,0.05), rgba(30,215,96,0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .track:hover::before {
+            opacity: 1;
+        }
+        
+        .track:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .track-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .track-artist {
+            color: #667eea;
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .track-details {
+            font-size: 13px;
+            color: #666;
+            background: rgba(255,255,255,0.7);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        
+        .track button {
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            margin-top: 15px;
+            font-size: 14px;
+            padding: 8px 20px;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 30px;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .error {
+            color: #dc3545;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .links a {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .logout-btn {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="logout-btn" onclick="logout()">Deconectare</button>
+        <h1>🎵 Profilul Meu</h1>
+        
+        <div class="links">
+            <a href="/">Demo Principal</a>
+            <a href="/login">Login</a>
+            <a href="/register">Înregistrare</a>
+        </div>
+
+        <div id="user-info" class="user-info">
+            <h3>Informații Utilizator</h3>
+            <div id="user-details">Se încarcă...</div>
+        </div>
+
+        <div class="recommendations-section">
+            <h2>🎯 Obține Recomandări Personalizate</h2>
+            
+            <div class="recommendation-type">
+                <h3>📊 Content-Based Filtering</h3>
+                <p>Recomandări bazate pe piesele pe care le-ai apreciat și caracteristicile lor acustice.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="cb-genres">🎼 Genuri Preferate</label>
+                        <input type="text" id="cb-genres" placeholder="pop, rock, electronic">
+                    </div>
+                    <div class="form-group">
+                        <label for="cb-energy">⚡ Energie</label>
+                        <input type="range" id="cb-energy" min="0" max="1" step="0.1" value="0.5">
+                        <span id="cb-energy-value" class="slider-value">0.5</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cb-danceability">💃 Dansabilitate</label>
+                        <input type="range" id="cb-danceability" min="0" max="1" step="0.1" value="0.5">
+                        <span id="cb-danceability-value" class="slider-value">0.5</span>
+                    </div>
+                </div>
+                
+                <button onclick="getContentBasedRecommendations()">🎵 Obține Recomandări Content-Based</button>
+                <div id="cb-loading" class="loading" style="display: none;">Se încarcă...</div>
+                <div id="cb-recommendations"></div>
+            </div>
+
+            <div class="recommendation-type">
+                <h3>🧠 Knowledge-Based Filtering</h3>
+                <p>Recomandări bazate pe profilul tău și preferințele specificate.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="kb-genres">🎼 Genuri Preferate</label>
+                        <input type="text" id="kb-genres" placeholder="pop, rock, electronic">
+                    </div>
+                    <div class="form-group">
+                        <label for="kb-mood">😊 Mood</label>
+                        <select id="kb-mood">
+                            <option value="happy">😊 Fericit</option>
+                            <option value="energetic">⚡ Energic</option>
+                            <option value="calm">😌 Calm</option>
+                            <option value="melancholic">😔 Melancolic</option>
+                            <option value="party">🎉 Petrecere</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kb-listening-time">⏱️ Timp Ascultare</label>
+                        <select id="kb-listening-time">
+                            <option value="short">⚡ Scurt</option>
+                            <option value="medium" selected>⏳ Mediu</option>
+                            <option value="long">🕐 Lung</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kb-energy">⚡ Energie</label>
+                        <input type="range" id="kb-energy" min="0" max="1" step="0.1" value="0.5">
+                        <span id="kb-energy-value" class="slider-value">0.5</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="kb-danceability">💃 Dansabilitate</label>
+                        <input type="range" id="kb-danceability" min="0" max="1" step="0.1" value="0.5">
+                        <span id="kb-danceability-value" class="slider-value">0.5</span>
+                    </div>
+                </div>
+                
+                <button onclick="getKnowledgeBasedRecommendations()">🧠 Obține Recomandări Knowledge-Based</button>
+                <div id="kb-loading" class="loading" style="display: none;">Se încarcă...</div>
+                <div id="kb-recommendations"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+
+        // Check authentication on page load
+        window.addEventListener('load', async function() {
+            try {
+                const response = await fetch('/api/auth/check');
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.authenticated) {
+                        currentUser = result;
+                        loadUserProfile();
+                    } else {
+                        window.location.href = '/login';
+                    }
+                } else {
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                console.error('Eroare verificare autentificare:', error);
+                window.location.href = '/login';
+            }
+        });
+
+        // Update slider values
+        document.getElementById('cb-energy').addEventListener('input', function() {
+            document.getElementById('cb-energy-value').textContent = this.value;
+        });
+        document.getElementById('cb-danceability').addEventListener('input', function() {
+            document.getElementById('cb-danceability-value').textContent = this.value;
+        });
+        document.getElementById('kb-energy').addEventListener('input', function() {
+            document.getElementById('kb-energy-value').textContent = this.value;
+        });
+        document.getElementById('kb-danceability').addEventListener('input', function() {
+            document.getElementById('kb-danceability-value').textContent = this.value;
+        });
+
+        async function loadUserProfile() {
+            try {
+                const response = await fetch(`/api/user/${currentUser.user_id}/stats`);
+                if (response.ok) {
+                    const data = await response.json();
+                    displayUserInfo(data);
+                } else {
+                    document.getElementById('user-details').innerHTML = 'Eroare la încărcarea profilului.';
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                document.getElementById('user-details').innerHTML = 'Eroare de conexiune.';
+            }
+        }
+
+        function displayUserInfo(data) {
+            const userDetails = document.getElementById('user-details');
+            userDetails.innerHTML = `
+                <p><strong>Username:</strong> ${currentUser.username}</p>
+                <p><strong>ID Utilizator:</strong> ${currentUser.user_id}</p>
+                <p><strong>Genuri Preferate:</strong> ${data.preferred_genres ? data.preferred_genres.join(', ') : 'Nu sunt setate'}</p>
+                <p><strong>Artiști Preferați:</strong> ${data.preferred_artists ? data.preferred_artists.join(', ') : 'Nu sunt setați'}</p>
+                <p><strong>Total Interacțiuni:</strong> ${data.total_interactions}</p>
+                <p><strong>Piese Apreciate:</strong> ${data.liked_tracks_count}</p>
+            `;
+
+            // Pre-populate form fields with user preferences
+            if (data.preferred_genres && data.preferred_genres.length > 0) {
+                document.getElementById('cb-genres').value = data.preferred_genres.join(', ');
+                document.getElementById('kb-genres').value = data.preferred_genres.join(', ');
+            }
+        }
+
+        async function getContentBasedRecommendations() {
+            const loading = document.getElementById('cb-loading');
+            const recommendations = document.getElementById('cb-recommendations');
+            
+            loading.style.display = 'block';
+            recommendations.innerHTML = '';
+            
+            const genres = document.getElementById('cb-genres').value;
+            const energy = document.getElementById('cb-energy').value;
+            const danceability = document.getElementById('cb-danceability').value;
+            
+            const params = new URLSearchParams({
+                genres: genres,
+                energy: energy,
+                danceability: danceability
+            });
+            
+            try {
+                const response = await fetch(`/api/user/${currentUser.user_id}/recommendations/content-based?${params}`);
+                const result = await response.json();
+                
+                if (result.recommendations && result.recommendations.length > 0) {
+                    displayRecommendations(result.recommendations, 'cb-recommendations');
+                } else {
+                    recommendations.innerHTML = '<p>Nu s-au găsit recomandări Content-Based.</p>';
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                recommendations.innerHTML = '<p class="error">Eroare la obținerea recomandărilor.</p>';
+            }
+            
+            loading.style.display = 'none';
+        }
+
+        async function getKnowledgeBasedRecommendations() {
+            const loading = document.getElementById('kb-loading');
+            const recommendations = document.getElementById('kb-recommendations');
+            
+            loading.style.display = 'block';
+            recommendations.innerHTML = '';
+            
+            const genres = document.getElementById('kb-genres').value;
+            const mood = document.getElementById('kb-mood').value;
+            const listeningTime = document.getElementById('kb-listening-time').value;
+            const energy = document.getElementById('kb-energy').value;
+            const danceability = document.getElementById('kb-danceability').value;
+            
+            const params = new URLSearchParams({
+                genres: genres,
+                mood: mood,
+                listening_time: listeningTime,
+                energy: energy,
+                danceability: danceability
+            });
+            
+            try {
+                const response = await fetch(`/api/user/${currentUser.user_id}/recommendations/knowledge-based?${params}`);
+                const result = await response.json();
+                
+                if (result.recommendations && result.recommendations.length > 0) {
+                    displayRecommendations(result.recommendations, 'kb-recommendations');
+                } else {
+                    recommendations.innerHTML = '<p>Nu s-au găsit recomandări Knowledge-Based.</p>';
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                recommendations.innerHTML = '<p class="error">Eroare la obținerea recomandărilor.</p>';
+            }
+            
+            loading.style.display = 'none';
+        }
+
+        function displayRecommendations(recommendations, containerId) {
+            const container = document.getElementById(containerId);
+            let html = '<h4>🎵 Recomandări:</h4>';
+            
+            recommendations.forEach((track, index) => {
+                html += `
+                    <div class="track">
+                        <div class="track-name">${index + 1}. ${track.track_name}</div>
+                        <div class="track-artist">🎤 ${track.artists}</div>
+                        <div class="track-details">
+                            🎼 Gen: ${track.track_genre || 'N/A'} | 
+                            ⚡ Energie: ${(track.energy || 0).toFixed(2)} | 
+                            💃 Dansabilitate: ${(track.danceability || 0).toFixed(2)} | 
+                            📈 Popularitate: ${track.popularity || 'N/A'}
+                            ${track.similarity_score ? ` | 🎯 Similaritate: ${track.similarity_score.toFixed(3)}` : ''}
+                            ${track.match_score ? ` | ✨ Match: ${track.match_score.toFixed(3)}` : ''}
+                            ${track.source ? ` | 📍 Sursă: ${track.source}` : ''}
+                        </div>
+                        <button onclick="likeTrack('${track.track_id}')" style="margin-top: 10px; background-color: #e91e63;">
+                            ❤️ Îmi place
+                        </button>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        async function likeTrack(trackId) {
+            try {
+                const response = await fetch(`/api/user/${currentUser.user_id}/interaction`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        track_id: trackId,
+                        interaction_type: 'like'
+                    })
+                });
+                
+                if (response.ok) {
+                    alert('Piesă adăugată la favorite!');
+                } else {
+                    alert('Eroare la adăugarea la favorite.');
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                alert('Eroare de conexiune.');
+            }
+        }
+
+        async function logout() {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    alert('Eroare la deconectare.');
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                alert('Eroare de conexiune.');
+            }
+        }
+    </script>
+</body>
+</html>

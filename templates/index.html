@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem de Recomandare Muzică - Spotify Dataset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-links a {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .auth-links a:hover::before {
+            left: 0;
+        }
+        
+        .auth-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        input[type="range"] {
+            height: 6px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .slider-value {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1ed760, #17c653);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        button:hover::before {
+            left: 0;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(29, 185, 84, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 20px;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .recommendations {
+            margin-top: 40px;
+        }
+        
+        .recommendations h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+        
+        .track {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            border-left: 5px solid #1db954;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .track::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(29,185,84,0.05), rgba(30,215,96,0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .track:hover::before {
+            opacity: 1;
+        }
+        
+        .track:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .track-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .track-artist {
+            color: #667eea;
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .track-details {
+            font-size: 13px;
+            color: #666;
+            background: rgba(255,255,255,0.7);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .auth-links a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Sistem de Recomandare Muzică</h1>
+        
+        <div class="auth-links">
+            <a href="/login">Login</a>
+            <a href="/register">Înregistrare</a>
+            <a href="/profile">Profil</a>
+        </div>
+
+        <div class="form-container">
+            <form id="recommendationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="user_id">👤 ID Utilizator</label>
+                        <input type="text" id="user_id" name="user_id" value="demo_user" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferred_genres">🎼 Genuri Preferate</label>
+                        <input type="text" id="preferred_genres" name="preferred_genres" 
+                               placeholder="pop, rock, electronic, jazz" value="pop, rock">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mood">😊 Mood</label>
+                        <select id="mood" name="mood">
+                            <option value="happy">😊 Fericit</option>
+                            <option value="energetic">⚡ Energic</option>
+                            <option value="calm">😌 Calm</option>
+                            <option value="melancholic">😔 Melancolic</option>
+                            <option value="party">🎉 Petrecere</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listening_time">⏱️ Timp de Ascultare</label>
+                        <select id="listening_time" name="listening_time">
+                            <option value="short">⚡ Scurt (< 30 min)</option>
+                            <option value="medium" selected>⏳ Mediu (30-60 min)</option>
+                            <option value="long">🕐 Lung (> 60 min)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="energy_level">⚡ Nivel Energie</label>
+                        <input type="range" id="energy_level" name="energy_level" 
+                               min="0" max="1" step="0.1" value="0.5">
+                        <span id="energy_value" class="slider-value">0.5</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="danceability">💃 Dansabilitate</label>
+                        <input type="range" id="danceability" name="danceability" 
+                               min="0" max="1" step="0.1" value="0.5">
+                        <span id="danceability_value" class="slider-value">0.5</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num_recommendations">🔢 Numărul de Recomandări</label>
+                        <input type="number" id="num_recommendations" name="num_recommendations" 
+                               min="1" max="50" value="10">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="use_recombee" name="use_recombee" checked>
+                            <label for="use_recombee">🤖 Folosește Recombee AI</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">🎵 Obține Recomandări Magice</button>
+            </form>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Se încarcă recomandările...
+        </div>
+
+        <div id="recommendations" class="recommendations"></div>
+    </div>
+
+    <script>
+        // Update slider values
+        document.getElementById('energy_level').addEventListener('input', function() {
+            document.getElementById('energy_value').textContent = this.value;
+        });
+        
+        document.getElementById('danceability').addEventListener('input', function() {
+            document.getElementById('danceability_value').textContent = this.value;
+        });
+
+        // Handle form submission
+        document.getElementById('recommendationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const recommendations = document.getElementById('recommendations');
+            
+            loading.style.display = 'block';
+            recommendations.innerHTML = '';
+            
+            const formData = new FormData(this);
+            const data = {
+                user_id: formData.get('user_id'),
+                preferred_genres: formData.get('preferred_genres').split(',').map(g => g.trim()),
+                mood: formData.get('mood'),
+                listening_time: formData.get('listening_time'),
+                energy_level: parseFloat(formData.get('energy_level')),
+                danceability: parseFloat(formData.get('danceability')),
+                num_recommendations: parseInt(formData.get('num_recommendations')),
+                use_recombee: formData.get('use_recombee') === 'on'
+            };
+            
+            try {
+                const response = await fetch('/api/recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.recommendations && result.recommendations.length > 0) {
+                    let html = '<h2>🎵 Recomandări pentru tine:</h2>';
+                    
+                    result.recommendations.forEach((track, index) => {
+                        html += `
+                            <div class="track">
+                                <div class="track-name">${index + 1}. ${track.track_name}</div>
+                                <div class="track-artist">🎤 ${track.artists}</div>
+                                <div class="track-details">
+                                    🎼 Gen: ${track.track_genre || 'N/A'} | 
+                                    ⚡ Energie: ${(track.energy || 0).toFixed(2)} | 
+                                    💃 Dansabilitate: ${(track.danceability || 0).toFixed(2)} | 
+                                    📈 Popularitate: ${track.popularity || 'N/A'}
+                                    ${track.similarity_score ? ` | 🎯 Similaritate: ${track.similarity_score.toFixed(3)}` : ''}
+                                    ${track.match_score ? ` | ✨ Match: ${track.match_score.toFixed(3)}` : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    recommendations.innerHTML = html;
+                } else {
+                    recommendations.innerHTML = '<p>Nu s-au găsit recomandări. Încearcă să modifici criteriile.</p>';
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                recommendations.innerHTML = '<p style="color: red;">Eroare la obținerea recomandărilor. Verifică consola pentru detalii.</p>';
+            }
+            
+            loading.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
