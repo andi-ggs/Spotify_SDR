@@ -13,10 +13,11 @@ from collections import defaultdict
 class UserStorage:
     """Gestionează stocarea datelor utilizatorilor"""
     
-    def __init__(self, storage_file: str = 'users_data.json'):
+    def __init__(self, storage_file: str = 'users_data.json', recommendation_system=None):
         self.storage_file = storage_file
         self.users = self._load_users()
         self.auth_data = self._load_auth_data()  # Stochează datele de autentificare
+        self.recommendation_system = recommendation_system  # Pentru sincronizare cu Recombee
     
     def _load_users(self) -> Dict:
         """Încarcă datele utilizatorilor din fișier"""
@@ -28,10 +29,18 @@ class UserStorage:
                 return {}
         return {}
     
+    def load_users_data(self) -> Dict:
+        """Returnează toate datele utilizatorilor pentru sincronizare"""
+        return self._load_users()
+    
     def _save_users(self):
         """Salvează datele utilizatorilor în fișier"""
         with open(self.storage_file, 'w', encoding='utf-8') as f:
             json.dump(self.users, f, indent=2, ensure_ascii=False)
+    
+    def get_user_data_for_sync(self, user_id: str) -> Optional[Dict]:
+        """Returnează datele unui utilizator pentru sincronizare cu Recombee"""
+        return self.users.get(user_id)
     
     def _load_auth_data(self) -> Dict:
         """Încarcă datele de autentificare"""
@@ -119,6 +128,15 @@ class UserStorage:
                 preferred_artists=preferred_artists
             )
         
+        # Sincronizează cu Recombee dacă este disponibil
+        if self.recommendation_system:
+            try:
+                user_data = self.get_user_data_for_sync(user_id)
+                if user_data:
+                    self.recommendation_system.sync_user_to_recombee(user_data)
+            except Exception as e:
+                print(f"Eroare la sincronizarea utilizatorului nou cu Recombee: {e}")
+        
         return {'success': True, 'user_id': user_id}
     
     def authenticate_user(self, username: str, password: str) -> Dict:
@@ -194,13 +212,23 @@ class UserStorage:
             self.users[user_id]['danceability'] = danceability
         
         self._save_users()
+        
+        # Sincronizează cu Recombee dacă este disponibil
+        if self.recommendation_system:
+            try:
+                user_data = self.get_user_data_for_sync(user_id)
+                if user_data:
+                    self.recommendation_system.sync_user_to_recombee(user_data)
+            except Exception as e:
+                print(f"Eroare la sincronizarea preferințelor cu Recombee: {e}")
     
     def add_interaction(self, user_id: str, track_id: str, interaction_type: str,
-                       metadata: Dict = None):
+                       metadata: Dict = None, recomm_id: str = None):
         """
         Adaugă o interacțiune (ascultare, like, skip, etc.)
         
         interaction_type: 'listen', 'like', 'skip', 'playlist_add', etc.
+        recomm_id: ID-ul recomandării (dacă interacțiunea provine dintr-o recomandare)
         """
         if user_id not in self.users:
             self.register_user(user_id)
@@ -209,10 +237,26 @@ class UserStorage:
             'track_id': track_id,
             'type': interaction_type,
             'timestamp': datetime.now().isoformat(),
-            'metadata': metadata or {}
+            'metadata': metadata or {},
+            'recomm_id': recomm_id  # Pentru tracking-ul succesului recomandărilor
         }
         
         self.users[user_id]['interactions'].append(interaction)
+        
+        # Trimite interacțiunea către Recombee
+        if self.recommendation_system:
+            try:
+                if interaction_type == 'like':
+                    self.recommendation_system.send_track_like(user_id, track_id, recomm_id)
+                elif interaction_type == 'dislike':
+                    self.recommendation_system.send_track_dislike(user_id, track_id, recomm_id)
+                elif interaction_type == 'listen':
+                    duration = metadata.get('duration', 30) if metadata else 30
+                    self.recommendation_system.send_track_view(user_id, track_id, duration, recomm_id)
+                elif interaction_type == 'bookmark':
+                    self.recommendation_system.send_track_bookmark(user_id, track_id, recomm_id)
+            except Exception as e:
+                print(f"Eroare la trimiterea interacțiunii către Recombee: {e}")
         
         # Actualizează istoricul
         if interaction_type == 'listen':
@@ -244,5 +288,37 @@ class UserStorage:
     
     def get_user_stats(self, user_id: str) -> Dict:
         """Obține statisticile utilizatorului"""
-        return self.users.get(user_id, {}).get('stats', {})
+        user_data = self.users.get(user_id, {})
+        stats = user_data.get('stats', {})
+        
+        # Add liked tracks count to stats
+        stats['liked_tracks_count'] = len(user_data.get('liked_tracks', []))
+        stats['disliked_tracks_count'] = len(user_data.get('disliked_tracks', []))
+        
+        return stats
+    
+    def add_liked_track(self, user_id: str, track_id: str):
+        """Adaugă o piesă la lista de favorite"""
+        if user_id not in self.users:
+            self.register_user(user_id)
+        
+        if track_id not in self.users[user_id]['liked_tracks']:
+            self.users[user_id]['liked_tracks'].append(track_id)
+            self._save_users()
+    
+    def add_disliked_track(self, user_id: str, track_id: str):
+        """Adaugă o piesă la lista de piese neapreciate"""
+        if user_id not in self.users:
+            self.register_user(user_id)
+        
+        if 'disliked_tracks' not in self.users[user_id]:
+            self.users[user_id]['disliked_tracks'] = []
+        
+        if track_id not in self.users[user_id]['disliked_tracks']:
+            self.users[user_id]['disliked_tracks'].append(track_id)
+            self._save_users()
+    
+    def get_user_disliked_tracks(self, user_id: str) -> List[str]:
+        """Returnează lista de piese neapreciate de utilizator"""
+        return self.users.get(user_id, {}).get('disliked_tracks', [])
 

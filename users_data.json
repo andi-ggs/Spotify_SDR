@@ -70,5 +70,1104 @@
         "The Weeknd": 1
       }
     }
+  },
+  "user_1765393629378": {
+    "user_id": "user_1765393629378",
+    "email": "andreea21@test.com",
+    "name": "",
+    "registered_at": "2025-12-10T21:07:09.380071",
+    "preferred_genres": [
+      "pop",
+      "r&b",
+      "latin"
+    ],
+    "preferred_artists": [
+      "Justin Timberlake",
+      "Justin Bieber",
+      "The Weeknd"
+    ],
+    "mood_preferences": [
+      {
+        "mood": "happy",
+        "timestamp": "2025-12-10T21:08:07.178493"
+      }
+    ],
+    "listening_history": [
+      {
+        "track_id": "2kwV1oVEb9mLkGbFaQX4zU",
+        "timestamp": "2025-12-10T22:41:57.853808"
+      },
+      {
+        "track_id": "38Uq4auvCzFYWtYjLeB5xz",
+        "timestamp": "2025-12-10T22:41:57.869780"
+      },
+      {
+        "track_id": "78ibI5Q8xHs4qYwD0OM2Sw",
+        "timestamp": "2025-12-10T22:41:57.876693"
+      },
+      {
+        "track_id": "0IOeTm4kj6ONgNRWnFQokD",
+        "timestamp": "2025-12-10T22:41:57.904090"
+      },
+      {
+        "track_id": "5VCiHDSwirlQ3yGZAcW8sh",
+        "timestamp": "2025-12-10T22:41:57.910765"
+      },
+      {
+        "track_id": "4B8RTAHSPfYpV222GsmEjq",
+        "timestamp": "2025-12-10T22:41:57.931668"
+      },
+      {
+        "track_id": "05tQHifEgbVLavnO3GcuxN",
+        "timestamp": "2025-12-10T22:41:58.609963"
+      },
+      {
+        "track_id": "1fS2x4kXEsfLMPN6p5Was4",
+        "timestamp": "2025-12-10T22:41:58.621049"
+      },
+      {
+        "track_id": "3qk4wRMDlaeagZGjSYbsOV",
+        "timestamp": "2025-12-10T22:41:58.696121"
+      },
+      {
+        "track_id": "0yy3WShigK5eqAmhS4aRwz",
+        "timestamp": "2025-12-10T22:41:58.697402"
+      },
+      {
+        "track_id": "2pXg8l1JGZ3hCyFqxirV13",
+        "timestamp": "2025-12-10T22:49:20.820874"
+      },
+      {
+        "track_id": "1ia62vfFbklbRgNfx0CPC5",
+        "timestamp": "2025-12-10T22:49:20.826312"
+      },
+      {
+        "track_id": "3CmUas41TD2t8EGNZ85J9f",
+        "timestamp": "2025-12-10T22:49:20.831241"
+      },
+      {
+        "track_id": "0bhhXULPNfCsVhZp35HrC3",
+        "timestamp": "2025-12-10T22:49:20.837211"
+      },
+      {
+        "track_id": "1dvlY1iYFNgO7SFWRGHB3x",
+        "timestamp": "2025-12-10T22:49:20.840223"
+      },
+      {
+        "track_id": "29bZ3bs505KcwIVqWFOPBS",
+        "timestamp": "2025-12-10T22:49:20.889938"
+      },
+      {
+        "track_id": "5OOPYQor9kRh18B73f2Vci",
+        "timestamp": "2025-12-10T22:49:21.662169"
+      },
+      {
+        "track_id": "1a17Gt5Vh0HTKFCZr8Pctk",
+        "timestamp": "2025-12-10T22:49:21.678772"
+      },
+      {
+        "track_id": "1F32ETzCVozARhgkRTjuyA",
+        "timestamp": "2025-12-10T22:49:21.684091"
+      },
+      {
+        "track_id": "5pvHO1kSuob4imoiqa3fey",
+        "timestamp": "2025-12-10T22:49:21.685454"
+      },
+      {
+        "track_id": "1UTdSl8RRxiYSfv9v0tdhL",
+        "timestamp": "2025-12-10T22:49:23.104149"
+      },
+      {
+        "track_id": "3oxGJdepSlIwJxjyvtPxXT",
+        "timestamp": "2025-12-10T22:49:23.135018"
+      },
+      {
+        "track_id": "1eoQsc67QBYVC4Pw84Lqk8",
+        "timestamp": "2025-12-10T22:49:23.136912"
+      },
+      {
+        "track_id": "6OYgBAP07DzGO7GuRTRQkJ",
+        "timestamp": "2025-12-10T22:49:23.142238"
+      },
+      {
+        "track_id": "7Bcjjhemjq1HxoWkTw4X6O",
+        "timestamp": "2025-12-10T22:49:23.155628"
+      },
+      {
+        "track_id": "5v5AEsqd3fGCl7V8POx1BQ",
+        "timestamp": "2025-12-10T22:49:23.159212"
+      },
+      {
+        "track_id": "223dRxIidnjKOvmTG3T57n",
+        "timestamp": "2025-12-10T22:49:24.019580"
+      },
+      {
+        "track_id": "6RLT4oQWaW3WiBmuTFBZnI",
+        "timestamp": "2025-12-10T22:49:24.020976"
+      },
+      {
+        "track_id": "5so1wKv1JCcpllBGxrOjjL",
+        "timestamp": "2025-12-10T22:49:24.027920"
+      },
+      {
+        "track_id": "2JtLVLcBKBoMoM3C8OMtu4",
+        "timestamp": "2025-12-10T22:49:24.059519"
+      },
+      {
+        "track_id": "7MiYNyj5si5yiWyeSkgzqB",
+        "timestamp": "2025-12-10T22:49:25.270702"
+      },
+      {
+        "track_id": "0rWLHJnMyJaMFA8x9l8AT0",
+        "timestamp": "2025-12-10T22:49:25.294713"
+      },
+      {
+        "track_id": "2Db4RDun4YmjGcypDB8Av3",
+        "timestamp": "2025-12-10T22:49:25.296619"
+      },
+      {
+        "track_id": "3DGv7g1poqft9DSaVRk6O2",
+        "timestamp": "2025-12-10T22:49:25.305692"
+      },
+      {
+        "track_id": "6TeJ52WYcJT92bO95BY17u",
+        "timestamp": "2025-12-10T22:49:25.308404"
+      },
+      {
+        "track_id": "5q4gc4nzxSgtwIBnIuCT6M",
+        "timestamp": "2025-12-10T22:49:25.321072"
+      },
+      {
+        "track_id": "7jzJD8kTMk4GIBvBNR2VYo",
+        "timestamp": "2025-12-10T22:49:26.109096"
+      },
+      {
+        "track_id": "6H1hnJRQOGQ9djPL3jNu9G",
+        "timestamp": "2025-12-10T22:49:26.111074"
+      },
+      {
+        "track_id": "0vCbiMfsdCBKups1wFv95u",
+        "timestamp": "2025-12-10T22:49:26.150918"
+      },
+      {
+        "track_id": "5xWxnLpw8ooMW1nJwY2hui",
+        "timestamp": "2025-12-10T22:49:26.170592"
+      },
+      {
+        "track_id": "1T8grchCkVHRzP2McY9ARx",
+        "timestamp": "2025-12-10T23:05:12.223113"
+      },
+      {
+        "track_id": "2fU4JsAoRiOam2azK907yb",
+        "timestamp": "2025-12-10T23:05:12.225002"
+      },
+      {
+        "track_id": "2drouoeVvVzz5cRfe9VK8W",
+        "timestamp": "2025-12-10T23:05:12.244351"
+      },
+      {
+        "track_id": "3r9m79pHykbs4FrCXlq1oO",
+        "timestamp": "2025-12-10T23:05:12.255951"
+      },
+      {
+        "track_id": "0lYBSQXN6rCTvUZvg9S0lU",
+        "timestamp": "2025-12-10T23:05:12.280541"
+      },
+      {
+        "track_id": "2o3x3qG1XgKutD5IZPTPgA",
+        "timestamp": "2025-12-10T23:05:12.307519"
+      },
+      {
+        "track_id": "5i7s3sB1LzxeVz8CWVEpAO",
+        "timestamp": "2025-12-10T23:05:13.061180"
+      },
+      {
+        "track_id": "1B4KDy5VAXxR8FayLvWlJu",
+        "timestamp": "2025-12-10T23:05:13.062454"
+      },
+      {
+        "track_id": "3aPC70iegVoD7S4v0Ma3rk",
+        "timestamp": "2025-12-10T23:05:13.094551"
+      },
+      {
+        "track_id": "2sWP5BvD2gcT32MpMAhkRU",
+        "timestamp": "2025-12-10T23:05:13.136921"
+      },
+      {
+        "track_id": "0M88JRtpXQK8i2XP0WX8jO",
+        "timestamp": "2025-12-10T23:05:19.429456"
+      },
+      {
+        "track_id": "4zD9RBG51Lj8bnQwolLnyu",
+        "timestamp": "2025-12-10T23:05:34.090501"
+      },
+      {
+        "track_id": "0U6bQIAh6MCGo1xjbIIx2S",
+        "timestamp": "2025-12-10T23:06:56.811498"
+      }
+    ],
+    "liked_tracks": [
+      "3ATMIyGvkoR8yTeqFCiHFl",
+      "3VS1hkofsGq4NwkYdAYL1l",
+      "1TRnIxwWeJoE6MVimzjw2w",
+      "0GzuHFG4Ql6DoyxFRnIk3F",
+      "23sehjUVTKJTzYQDJqJFXr",
+      "test_track_123",
+      "test_track_789",
+      "4B8RTAHSPfYpV222GsmEjq",
+      "78ibI5Q8xHs4qYwD0OM2Sw",
+      "1fS2x4kXEsfLMPN6p5Was4",
+      "5VCiHDSwirlQ3yGZAcW8sh",
+      "38Uq4auvCzFYWtYjLeB5xz",
+      "0lYBSQXN6rCTvUZvg9S0lU",
+      "0M88JRtpXQK8i2XP0WX8jO",
+      "2o3x3qG1XgKutD5IZPTPgA",
+      "0U6bQIAh6MCGo1xjbIIx2S"
+    ],
+    "interactions": [
+      {
+        "track_id": "3ATMIyGvkoR8yTeqFCiHFl",
+        "type": "like",
+        "timestamp": "2025-12-10T21:53:05.888686",
+        "metadata": {}
+      },
+      {
+        "track_id": "0GzuHFG4Ql6DoyxFRnIk3F",
+        "type": "dislike",
+        "timestamp": "2025-12-10T21:53:08.528132",
+        "metadata": {}
+      },
+      {
+        "track_id": "3VS1hkofsGq4NwkYdAYL1l",
+        "type": "like",
+        "timestamp": "2025-12-10T21:53:14.039236",
+        "metadata": {}
+      },
+      {
+        "track_id": "1TRnIxwWeJoE6MVimzjw2w",
+        "type": "like",
+        "timestamp": "2025-12-10T21:53:17.386109",
+        "metadata": {}
+      },
+      {
+        "track_id": "0GzuHFG4Ql6DoyxFRnIk3F",
+        "type": "like",
+        "timestamp": "2025-12-10T21:59:31.326385",
+        "metadata": {}
+      },
+      {
+        "track_id": "3VS1hkofsGq4NwkYdAYL1l",
+        "type": "like",
+        "timestamp": "2025-12-10T21:59:33.477372",
+        "metadata": {}
+      },
+      {
+        "track_id": "3VS1hkofsGq4NwkYdAYL1l",
+        "type": "like",
+        "timestamp": "2025-12-10T21:59:37.757689",
+        "metadata": {}
+      },
+      {
+        "track_id": "23sehjUVTKJTzYQDJqJFXr",
+        "type": "like",
+        "timestamp": "2025-12-10T21:59:40.007048",
+        "metadata": {}
+      },
+      {
+        "track_id": "3ATMIyGvkoR8yTeqFCiHFl",
+        "type": "like",
+        "timestamp": "2025-12-10T21:59:44.211719",
+        "metadata": {}
+      },
+      {
+        "track_id": "3ATMIyGvkoR8yTeqFCiHFl",
+        "type": "like",
+        "timestamp": "2025-12-10T22:16:12.624562",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "test_track_123",
+        "type": "like",
+        "timestamp": "2025-12-10T22:20:09.144411",
+        "metadata": {
+          "duration": 30,
+          "context": "test"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "test_track_789",
+        "type": "like",
+        "timestamp": "2025-12-10T22:24:09.976836",
+        "metadata": {
+          "duration": 45,
+          "context": "recombee_test"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3ATMIyGvkoR8yTeqFCiHFl",
+        "type": "like",
+        "timestamp": "2025-12-10T22:24:41.022918",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0GzuHFG4Ql6DoyxFRnIk3F",
+        "type": "like",
+        "timestamp": "2025-12-10T22:24:43.808196",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3VS1hkofsGq4NwkYdAYL1l",
+        "type": "like",
+        "timestamp": "2025-12-10T22:25:01.758435",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3ATMIyGvkoR8yTeqFCiHFl",
+        "type": "like",
+        "timestamp": "2025-12-10T22:35:10.802759",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0GzuHFG4Ql6DoyxFRnIk3F",
+        "type": "like",
+        "timestamp": "2025-12-10T22:35:16.370379",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3VS1hkofsGq4NwkYdAYL1l",
+        "type": "like",
+        "timestamp": "2025-12-10T22:35:22.017980",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "23sehjUVTKJTzYQDJqJFXr",
+        "type": "like",
+        "timestamp": "2025-12-10T22:35:35.427925",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "4B8RTAHSPfYpV222GsmEjq",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.248140",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2kwV1oVEb9mLkGbFaQX4zU",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.250797",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "78ibI5Q8xHs4qYwD0OM2Sw",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.251765",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "38Uq4auvCzFYWtYjLeB5xz",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.252827",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0IOeTm4kj6ONgNRWnFQokD",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.255057",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5VCiHDSwirlQ3yGZAcW8sh",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:57.257121",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "05tQHifEgbVLavnO3GcuxN",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:58.036841",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1fS2x4kXEsfLMPN6p5Was4",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:58.058469",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3qk4wRMDlaeagZGjSYbsOV",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:58.075177",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0yy3WShigK5eqAmhS4aRwz",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:41:58.080408",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "4B8RTAHSPfYpV222GsmEjq",
+        "type": "like",
+        "timestamp": "2025-12-10T22:42:02.650752",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "78ibI5Q8xHs4qYwD0OM2Sw",
+        "type": "like",
+        "timestamp": "2025-12-10T22:42:16.429429",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1fS2x4kXEsfLMPN6p5Was4",
+        "type": "like",
+        "timestamp": "2025-12-10T22:42:31.199264",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5VCiHDSwirlQ3yGZAcW8sh",
+        "type": "like",
+        "timestamp": "2025-12-10T22:44:37.374458",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "38Uq4auvCzFYWtYjLeB5xz",
+        "type": "like",
+        "timestamp": "2025-12-10T22:44:47.131823",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2pXg8l1JGZ3hCyFqxirV13",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.180401",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1ia62vfFbklbRgNfx0CPC5",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.181013",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1dvlY1iYFNgO7SFWRGHB3x",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.181829",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "29bZ3bs505KcwIVqWFOPBS",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.183676",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3CmUas41TD2t8EGNZ85J9f",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.185651",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0bhhXULPNfCsVhZp35HrC3",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:20.186667",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1F32ETzCVozARhgkRTjuyA",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:21.038052",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5pvHO1kSuob4imoiqa3fey",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:21.040849",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1a17Gt5Vh0HTKFCZr8Pctk",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:21.041913",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5OOPYQor9kRh18B73f2Vci",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:21.047146",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1UTdSl8RRxiYSfv9v0tdhL",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.513694",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "6OYgBAP07DzGO7GuRTRQkJ",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.514437",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1eoQsc67QBYVC4Pw84Lqk8",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.515960",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "7Bcjjhemjq1HxoWkTw4X6O",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.518399",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3oxGJdepSlIwJxjyvtPxXT",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.520851",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5v5AEsqd3fGCl7V8POx1BQ",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:22.521924",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "223dRxIidnjKOvmTG3T57n",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:23.363192",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5so1wKv1JCcpllBGxrOjjL",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:23.364338",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "6RLT4oQWaW3WiBmuTFBZnI",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:23.365742",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2JtLVLcBKBoMoM3C8OMtu4",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:23.419387",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2Db4RDun4YmjGcypDB8Av3",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.716115",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0rWLHJnMyJaMFA8x9l8AT0",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.717701",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "7MiYNyj5si5yiWyeSkgzqB",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.718530",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "6TeJ52WYcJT92bO95BY17u",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.719159",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5q4gc4nzxSgtwIBnIuCT6M",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.720610",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3DGv7g1poqft9DSaVRk6O2",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:24.723519",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "7jzJD8kTMk4GIBvBNR2VYo",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:25.490944",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "6H1hnJRQOGQ9djPL3jNu9G",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:25.496348",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0vCbiMfsdCBKups1wFv95u",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:25.506541",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5xWxnLpw8ooMW1nJwY2hui",
+        "type": "listen",
+        "timestamp": "2025-12-10T22:49:25.534747",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2drouoeVvVzz5cRfe9VK8W",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.623013",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0lYBSQXN6rCTvUZvg9S0lU",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.624448",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2fU4JsAoRiOam2azK907yb",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.625901",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1T8grchCkVHRzP2McY9ARx",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.626839",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2o3x3qG1XgKutD5IZPTPgA",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.629198",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3r9m79pHykbs4FrCXlq1oO",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:11.630040",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "1B4KDy5VAXxR8FayLvWlJu",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:12.446079",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "5i7s3sB1LzxeVz8CWVEpAO",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:12.455447",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "3aPC70iegVoD7S4v0Ma3rk",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:12.460324",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2sWP5BvD2gcT32MpMAhkRU",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:12.479966",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0lYBSQXN6rCTvUZvg9S0lU",
+        "type": "like",
+        "timestamp": "2025-12-10T23:05:14.505263",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0M88JRtpXQK8i2XP0WX8jO",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:17.809368",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0M88JRtpXQK8i2XP0WX8jO",
+        "type": "like",
+        "timestamp": "2025-12-10T23:05:27.307113",
+        "metadata": {
+          "context": "similar_track_modal",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "4zD9RBG51Lj8bnQwolLnyu",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:05:33.443655",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "4zD9RBG51Lj8bnQwolLnyu",
+        "type": "dislike",
+        "timestamp": "2025-12-10T23:05:37.594770",
+        "metadata": {
+          "context": "similar_track_modal",
+          "action": "dislike_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "2o3x3qG1XgKutD5IZPTPgA",
+        "type": "like",
+        "timestamp": "2025-12-10T23:06:52.743070",
+        "metadata": {
+          "context": "recommendations_page",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0U6bQIAh6MCGo1xjbIIx2S",
+        "type": "listen",
+        "timestamp": "2025-12-10T23:06:56.194728",
+        "metadata": {
+          "duration": 30,
+          "context": "recommendations_page"
+        },
+        "recomm_id": null
+      },
+      {
+        "track_id": "0U6bQIAh6MCGo1xjbIIx2S",
+        "type": "like",
+        "timestamp": "2025-12-10T23:07:04.362014",
+        "metadata": {
+          "context": "similar_track_modal",
+          "action": "like_button"
+        },
+        "recomm_id": null
+      }
+    ],
+    "stats": {
+      "total_listens": 53,
+      "total_likes": 27,
+      "favorite_genres": {
+        "pop": 2,
+        "r&b": 2,
+        "latin": 1
+      },
+      "favorite_artists": {
+        "Justin Timberlake": 1,
+        "Justin Bieber": 1,
+        "The Weeknd": 1
+      },
+      "liked_tracks_count": 12,
+      "disliked_tracks_count": 0
+    },
+    "listening_time_preference": "medium",
+    "energy_level": 0.5,
+    "danceability": 0.5
+  },
+  "user_1765395890847": {
+    "user_id": "user_1765395890847",
+    "email": "andreea+01@test.com",
+    "name": "",
+    "registered_at": "2025-12-10T21:44:50.849128",
+    "preferred_genres": [
+      "pop",
+      "rock",
+      "hip-hop",
+      "electronic"
+    ],
+    "preferred_artists": [
+      "Eminem"
+    ],
+    "mood_preferences": [
+      {
+        "mood": "happy",
+        "timestamp": "2025-12-10T21:45:12.069720"
+      }
+    ],
+    "listening_history": [],
+    "liked_tracks": [],
+    "interactions": [],
+    "stats": {
+      "total_listens": 0,
+      "total_likes": 0,
+      "favorite_genres": {
+        "pop": 2,
+        "rock": 1,
+        "hip-hop": 1,
+        "electronic": 1
+      },
+      "favorite_artists": {
+        "Eminem": 1
+      }
+    },
+    "listening_time_preference": "medium",
+    "energy_level": 0.5,
+    "danceability": 0.5
   }
 }

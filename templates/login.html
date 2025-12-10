@@ -263,9 +263,9 @@
                     messageDiv.textContent = result.message;
                     messageDiv.style.display = 'block';
                     
-                    // Redirect to profile after successful login
+                    // Redirect to recommendations after successful login
                     setTimeout(() => {
-                        window.location.href = '/profile';
+                        window.location.href = result.redirect || '/recommendations';
                     }, 1500);
                 } else {
                     messageDiv.className = 'message error';

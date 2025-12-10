@@ -397,12 +397,12 @@
                 
                 if (result.success) {
                     messageDiv.className = 'message success';
-                    messageDiv.textContent = result.message + ' Redirecționare către profil...';
+                    messageDiv.textContent = result.message + ' Redirecționare către configurare...';
                     messageDiv.style.display = 'block';
                     
-                    // Redirect to profile after successful registration
+                    // Redirect to onboarding after successful registration
                     setTimeout(() => {
-                        window.location.href = '/profile';
+                        window.location.href = result.redirect || '/onboarding';
                     }, 2000);
                 } else {
                     messageDiv.className = 'message error';

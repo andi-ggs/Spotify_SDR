@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun venit! - Sistem de Recomandare Muzică</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 50px 40px;
+            animation: slideUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .welcome-header h1 {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-header p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .step-text {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .onboarding-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '🎵';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .genre-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .genre-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(29,185,84,0.1), rgba(30,215,96,0.1));
+            transition: left 0.3s ease;
+        }
+        
+        .genre-card:hover::before {
+            left: 0;
+        }
+        
+        .genre-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #1db954;
+        }
+        
+        .genre-card.selected {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            border-color: #1db954;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(29,185,84,0.3);
+        }
+        
+        .genre-card.selected::before {
+            display: none;
+        }
+        
+        .genre-emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .genre-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .selected-count {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .selected-count.valid {
+            color: #1db954;
+            font-weight: 600;
+        }
+        
+        .continue-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .continue-btn.enabled {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1ed760, #17c653);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .continue-btn.enabled:hover::before {
+            left: 0;
+        }
+        
+        .continue-btn.enabled:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(29, 185, 84, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            .welcome-header h1 {
+                font-size: 2em;
+            }
+            
+            .genre-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 10px;
+            }
+            
+            .step {
+                margin: 0 10px;
+            }
+            
+            .step-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-header">
+            <h1>🎵 Bun venit în lumea muzicii!</h1>
+            <p>Să îți personalizăm experiența muzicală. Selectează genurile tale preferate pentru a primi recomandări perfecte de la început!</p>
+        </div>
+        
+        <div class="step-indicator">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Selectează genuri</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Primește recomandări</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Îmbunătățește profilul</div>
+            </div>
+        </div>
+        
+        <div class="onboarding-section">
+            <div class="section-title">Alege genurile tale preferate</div>
+            <p style="margin-bottom: 25px; color: #666; line-height: 1.6;">
+                Selectează cel puțin <strong>3 genuri</strong> pentru a începe. Cu cât alegi mai multe, cu atât recomandările vor fi mai precise!
+            </p>
+            
+            <div class="genre-grid" id="genreGrid">
+                <div class="genre-card" data-genre="pop">
+                    <span class="genre-emoji">🎤</span>
+                    <div class="genre-name">Pop</div>
+                </div>
+                <div class="genre-card" data-genre="rock">
+                    <span class="genre-emoji">🎸</span>
+                    <div class="genre-name">Rock</div>
+                </div>
+                <div class="genre-card" data-genre="electronic">
+                    <span class="genre-emoji">🎛️</span>
+                    <div class="genre-name">Electronic</div>
+                </div>
+                <div class="genre-card" data-genre="jazz">
+                    <span class="genre-emoji">🎺</span>
+                    <div class="genre-name">Jazz</div>
+                </div>
+                <div class="genre-card" data-genre="classical">
+                    <span class="genre-emoji">🎼</span>
+                    <div class="genre-name">Classical</div>
+                </div>
+                <div class="genre-card" data-genre="hip-hop">
+                    <span class="genre-emoji">🎤</span>
+                    <div class="genre-name">Hip-Hop</div>
+                </div>
+                <div class="genre-card" data-genre="r&b">
+                    <span class="genre-emoji">🎵</span>
+                    <div class="genre-name">R&B</div>
+                </div>
+                <div class="genre-card" data-genre="country">
+                    <span class="genre-emoji">🤠</span>
+                    <div class="genre-name">Country</div>
+                </div>
+                <div class="genre-card" data-genre="reggae">
+                    <span class="genre-emoji">🌴</span>
+                    <div class="genre-name">Reggae</div>
+                </div>
+                <div class="genre-card" data-genre="blues">
+                    <span class="genre-emoji">🎸</span>
+                    <div class="genre-name">Blues</div>
+                </div>
+                <div class="genre-card" data-genre="folk">
+                    <span class="genre-emoji">🪕</span>
+                    <div class="genre-name">Folk</div>
+                </div>
+                <div class="genre-card" data-genre="metal">
+                    <span class="genre-emoji">🤘</span>
+                    <div class="genre-name">Metal</div>
+                </div>
+                <div class="genre-card" data-genre="indie">
+                    <span class="genre-emoji">🎨</span>
+                    <div class="genre-name">Indie</div>
+                </div>
+                <div class="genre-card" data-genre="latin">
+                    <span class="genre-emoji">💃</span>
+                    <div class="genre-name">Latin</div>
+                </div>
+                <div class="genre-card" data-genre="funk">
+                    <span class="genre-emoji">🕺</span>
+                    <div class="genre-name">Funk</div>
+                </div>
+                <div class="genre-card" data-genre="ambient">
+                    <span class="genre-emoji">🌙</span>
+                    <div class="genre-name">Ambient</div>
+                </div>
+            </div>
+            
+            <div class="selected-count" id="selectedCount">
+                Selectează cel puțin 3 genuri pentru a continua (0 selectate)
+            </div>
+            
+            <button class="continue-btn" id="continueBtn" onclick="proceedToRecommendations()">
+                🎵 Să începem cu recomandările!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let selectedGenres = [];
+        const minGenres = 3;
+        
+        // Get user info from session
+        let currentUser = null;
+        
+        // Check if user is logged in
+        window.addEventListener('load', async function() {
+            try {
+                const response = await fetch('/api/auth/check');
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.authenticated) {
+                        currentUser = result;
+                    } else {
+                        window.location.href = '/login';
+                    }
+                } else {
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                console.error('Eroare verificare autentificare:', error);
+                window.location.href = '/login';
+            }
+        });
+        
+        // Handle genre selection
+        document.getElementById('genreGrid').addEventListener('click', function(e) {
+            const genreCard = e.target.closest('.genre-card');
+            if (!genreCard) return;
+            
+            const genre = genreCard.dataset.genre;
+            
+            if (genreCard.classList.contains('selected')) {
+                // Deselect
+                genreCard.classList.remove('selected');
+                selectedGenres = selectedGenres.filter(g => g !== genre);
+            } else {
+                // Select
+                genreCard.classList.add('selected');
+                selectedGenres.push(genre);
+            }
+            
+            updateSelectedCount();
+        });
+        
+        function updateSelectedCount() {
+            const countElement = document.getElementById('selectedCount');
+            const continueBtn = document.getElementById('continueBtn');
+            
+            if (selectedGenres.length >= minGenres) {
+                countElement.textContent = `Perfect! Ai selectat ${selectedGenres.length} genuri.`;
+                countElement.classList.add('valid');
+                continueBtn.classList.add('enabled');
+            } else {
+                const remaining = minGenres - selectedGenres.length;
+                countElement.textContent = `Selectează încă ${remaining} ${remaining === 1 ? 'gen' : 'genuri'} pentru a continua (${selectedGenres.length} selectate)`;
+                countElement.classList.remove('valid');
+                continueBtn.classList.remove('enabled');
+            }
+        }
+        
+        async function proceedToRecommendations() {
+            if (selectedGenres.length < minGenres || !currentUser) return;
+            
+            try {
+                // Update user preferences
+                const response = await fetch('/api/user/onboarding', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUser.user_id,
+                        preferred_genres: selectedGenres
+                    })
+                });
+                
+                if (response.ok) {
+                    // Redirect to recommendations page
+                    window.location.href = '/recommendations';
+                } else {
+                    alert('Eroare la salvarea preferințelor. Încearcă din nou.');
+                }
+            } catch (error) {
+                console.error('Eroare:', error);
+                alert('Eroare de conexiune. Încearcă din nou.');
+            }
+        }
+    </script>
+</body>
+</html>
