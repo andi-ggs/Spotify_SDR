@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Optional: improve font rendering */
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  height: 100%;
+}
